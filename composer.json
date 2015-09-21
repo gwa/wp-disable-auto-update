@@ -3,7 +3,9 @@
     "type"       : "library",
     "description": "Disable auto update info from wordpress.",
     "keywords"   : [
-        "wordpress, auto update, update"
+        "wordpress",
+        "auto update",
+        "update"
     ],
     "license"    : "MIT",
     "homepage"   : "https://github.com/gwa/wp-disable-auto-update",

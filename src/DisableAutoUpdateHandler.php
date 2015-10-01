@@ -40,20 +40,23 @@ class DisableAutoUpdateHandler
      */
     protected function disableWpAutoUpdate()
     {
-        $this->wpMockery->addFilter('auto_update_translation', '__return_false');
         $this->wpMockery->addFilter('automatic_updater_disabled', '__return_true');
+
         $this->wpMockery->addFilter('allow_minor_auto_core_updates', '__return_false');
         $this->wpMockery->addFilter('allow_major_auto_core_updates', '__return_false');
         $this->wpMockery->addFilter('allow_dev_auto_core_updates', '__return_false');
+
         $this->wpMockery->addFilter('auto_update_core', '__return_false');
         $this->wpMockery->addFilter('wp_auto_update_core', '__return_false');
-        $this->wpMockery->addFilter('auto_core_update_send_email', '__return_false');
         $this->wpMockery->addFilter('send_core_update_notification_email', '__return_false');
+
+        $this->wpMockery->addFilter('auto_update_translation', '__return_false');
+        $this->wpMockery->addFilter('auto_core_update_send_email', '__return_false');
         $this->wpMockery->addFilter('auto_update_plugin', '__return_false');
         $this->wpMockery->addFilter('auto_update_theme', '__return_false');
+
         $this->wpMockery->addFilter('automatic_updates_send_debug_email', '__return_false');
         $this->wpMockery->addFilter('automatic_updates_is_vcs_checkout', '__return_true');
-
         $this->wpMockery->addFilter('automatic_updates_send_debug_email ', '__return_false', 1);
 
         if (!defined('AUTOMATIC_UPDATER_DISABLED')) {
@@ -75,11 +78,11 @@ class DisableAutoUpdateHandler
         }
 
         /* Invalid host */
-        if (!$host = parse_url($url, PHP_URL_HOST)) {
+        if (!$host = $this->wpMockery->parseUrl($url, PHP_URL_HOST)) {
             return $pre;
         }
 
-        $urlData = parse_url($url);
+        $urlData = $this->wpMockery->parseUrl($url);
 
         /* block request */
         $path =  (false !== stripos($urlData['path'], 'update-check') || false !== stripos($urlData['path'], 'browse-happy'));

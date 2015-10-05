@@ -12,7 +12,7 @@ namespace Gwa\Wordpress\DisableAutoUpdate;
  * @license     MIT
  */
 
-use Gwa\Wordpress\MockeryWpBridge\MockeryWpBridge;
+use Gwa\Wordpress\MockeryWpBridge\WpBridge;
 
 /**
  * DisableAutoUpdateHandler.
@@ -22,14 +22,14 @@ use Gwa\Wordpress\MockeryWpBridge\MockeryWpBridge;
 class DisableAutoUpdateHandler
 {
     /**
-     * MockeryWpBridge instance.
+     * WpBridge instance.
      *
-     * @var \Gwa\Wordpress\MockeryWpBridge\MockeryWpBridge
+     * @var \Gwa\Wordpress\MockeryWpBridge\WpBridge
      */
     protected $wpMockery;
 
     public function __construct() {
-        $this->wpMockery = new MockeryWpBridge();
+        $this->wpMockery = new WpBridge();
     }
 
     /**

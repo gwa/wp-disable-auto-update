@@ -29,7 +29,7 @@ class DisableAutoUpdateHandler
     protected $wpMockery;
 
     public function __construct() {
-        $this->wpMockery = new MockeryWpBridge()
+        $this->wpMockery = new MockeryWpBridge();
     }
 
     /**
